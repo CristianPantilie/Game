@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public abstract class AbstractHero
 {
@@ -14,20 +13,27 @@ public abstract class AbstractHero
     private List<Item> inventory = new ArrayList<>();
     private List<Skill> skills = new ArrayList<>();
 
-    private Item headItem;
+    protected EnumMap<itemSlot,Item> equipment = new EnumMap<itemSlot,Item>(itemSlot.class);
+    /*   private Item headItem;
     private Item shoulderItem;
     private Item chestItem;
     private Item handsItem;
     private Item legsItem;
     private Item feetItem;
-
+    */
     private Skill firstSkill;
     private Skill secondSkill;
     private Skill thirdSkill;
     private Skill fourthSkill;
 
+
+
     void equipItem(Item item){
-        //TODO: cauta dupa ce tip are item-ul si dezechipeaza-l daca e unul in acel slot
+        if(equipment.get(item.getSlot())!=null){
+            this.unequipItem(equipment.get(item.getSlot()));
+        }
+
+        equipment.put(item.getSlot(),item);
         hitPoints += item.getHitPoints();
         mana += item.getMana();
         strength += item.getStrength();
@@ -36,17 +42,22 @@ public abstract class AbstractHero
     }
 
     void unequipItem(Item item){
-        //TODO: verifica daca item-ul respectiv e deja echipat
+        if(this.checkHasItem(item)) {
+            equipment.remove(item.getSlot());
+            hitPoints -= item.getHitPoints();
+            mana -= item.getMana();
+            strength -= item.getStrength();
+            dexterity -= item.getDexterity();
+            intelligence -= item.getIntelligence();
+        }
+        else System.out.println(item.getName() +"is not equipped!");
     }
 
-    AbstractHero(){
-
-    }
-
-    boolean checkItem(Item item){
-        if(this.headItem.equals(item)) return true;
+    boolean checkHasItem(Item item){
+        if(equipment.get(item.getSlot()).equals(item)) return true;
         return false;
     }
+
 
     void setSkill(int number, Skill s){
         if(!skills.contains(s))
