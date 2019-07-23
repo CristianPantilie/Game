@@ -1,4 +1,5 @@
-import java.util.ArrayList;
+import RNG.RNG;
+
 import java.util.Random;
 
 public class Main {
@@ -12,8 +13,10 @@ public class Main {
         PlayerGroup g = new PlayerGroup(p, p1);
 //        g.test();
 
-        int val = new Random().nextInt(5);
-        System.out.println(val);
+//        int val = new RNG().nextDouble();
+//        if(val)
+        RNG r = new RNG();
+
     }
 
 

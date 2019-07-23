@@ -1,3 +1,8 @@
+import RNG.RNG;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Zone
 {
     private int numberOfWaves = 5; //TODO: random
@@ -5,6 +10,8 @@ public class Zone
     private String description;
 
     PlayerGroup targetGroup;
+
+    RNG rng = new RNG();
 
     public Zone(PlayerGroup targetGroup)
     {
@@ -14,6 +21,10 @@ public class Zone
     }
 
     private void generateWave(){
-//        int random
+        int mobNumber = rng.generateMobNumber(75);
+        List<AbstractHero> mobs = new ArrayList<>();
+        for(int i = 0; i < mobNumber; i++){
+            mobs.add()
+        }
     }
 }
