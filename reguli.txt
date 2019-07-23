@@ -1,0 +1,57 @@
+
+
+Clase
+fighter (melee, cost dublu pt dex, int, wis)
+ranger (ranged, cost dublu pt con, int, wis, poate ataca si melee, si ranged; daca e pe linia din fata poate doar melee)
+mage (ranged, cost dublu pt str, dex, con)
+
+
+Skills
+damage/heal/shield (heal si shield ar trebui sa aiba doar mage-ul)
+numberOfTargets
+manaCost
+levelRequirement
+
+
+Items
+bonusuri la un stat sau skill
+daca da skill bonus, se aplica doar clasei care are acel skill, daca are nivelul necesar
+
+
+Monsters
+au si ei aceleasi clase, poate buffuri din iteme care dropeaza, formatii de cate 3
+XP on kill: se imparte la toti membrii care sunt in viata cand moare monstrul; ar trebui sa creasca in functie de nivelul monstrului
+
+Cand moare un membru al formatiei jucatorului, considerati ca e incapacitat si e “mort” doar in lupta respectiva.
+
+Formatie:
+line, triangle, reverse triangle, column
+line    triangle    reverse triangle    column          (se considera ca sunt cu fata spre dreapta)
+o         o                    o
+o             o            o                                  o  o  o
+o         o                    o
+
+Unitatile care sunt in spate pe column au hit chance -5% si dodge chance +5%.
+Skillurile defensive (care se dau pe aliati) nimeresc mereu. Formatia "column" e recomandata daca in spate sta un mage cu rol principal defensiv.
+Daca moare frontline-ul, devine frontline linia din spate si dispare modificatorul ca e ultimul din coloana.
+Un erou/monstru melee poate sa atace doar daca e in prima linie, si doar inamicii din prima linie.
+
+
+base hit chance: 95%
+base dodge chance: 5%
+
+pt fiecare nivel in plus/minus fata de inamic, hit chance creste/scade cu 1% si dodge chance scade/creste cu 1%
+Ex, daca se bat A cu B:
+A: lvl 3                 B: lvl 1
+hit: 97%              hit: 93%
+dodge: 93%      dodge: 97%
+
+La inceputul unei lupte se da un roll de initiativa care determina ordinea.
+Pentru fiecare atac, se da roll intai pentru sansa de a lovi, apoi, daca ar lovi, se da roll pentru cel atacat daca face dodge.
+Comportamentul inamic poate sa fie random din actiunile posibile (sa atace, sa foloseasca un skill), sau ii faceti voi un fel de AI ca sa decida ce e mai bine.
+Instructiunile voastre le dati de la tastatura, in System.in (ce nivel de monstri atacati, actiune si target).
+Pentru nivelul monstrilor, daca vreti, poate fi ales de exemplu x si sa ii dea cu nivel random intre x-1 si x+1, sau ceva de genul asta.
+Componenta formatiei de monstrii se va face random (si cu sansa mica sa aiba iteme pe ei, care vor fi lootate la sfarsitul luptei daca sunt batuti), iar formatia se va alege astfel incat sa aiba sens pt acea componenta (sa nu stea in ultima linie un fighter, sau in prima linie un mage).
+
+E doar un exemplu ce e aici, faceti voi cum vreti, decideti voi partea de balancing (cu cate stat points sa incepeti, ce bonusuri dau, skilluri de inceput, etc, dar asta ma gandesc ca ar veni mai la sfarsit, cand o sa puteti sa faceti niste lupte de test).
+Nu e ceva prea simplu si va dura, dar pe viitor va putea fi extins in frontend cu butoane, poate niste reprezentari vizuale rudimentare (sau complexe daca aveti timp si chef), poate un grid pe care sa se miste, in stil Heroes, sau fara, in stil Disciples.
