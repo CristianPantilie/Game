@@ -41,6 +41,11 @@ public abstract class AbstractHero
 
     boolean checkItem(Item item){
         if(this.headItem.equals(item)) return true;
+        if(this.shoulderItem.equals(item)) return true;
+        if(this.chestItem.equals(item)) return true;
+        if(this.handsItem.equals(item)) return true;
+        if(this.legsItem.equals(item)) return true;
+        if(this.feetItem.equals(item)) return true;
         return false;
     }
 
