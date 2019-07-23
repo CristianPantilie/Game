@@ -1,12 +1,15 @@
 public class Item {
+
     private final itemSlot slot;
+    private String name;
     private final int hitPoints;
     private final int mana;
     private final int strength;
     private final int dexterity;
     private final int intelligence;
 
-    public Item(itemSlot slot, int hitPoints, int mana, int strength, int dexterity, int intelligence) {
+    public Item(itemSlot slot, String name, int hitPoints, int mana, int strength, int dexterity, int intelligence) {
+        this.name = name;
         this.slot = slot;
         this.hitPoints = hitPoints;
         this.mana = mana;
@@ -19,6 +22,10 @@ public class Item {
 
     public itemSlot getSlot() {
         return slot;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public int getHitPoints() {
