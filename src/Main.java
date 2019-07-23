@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Main {
 
@@ -9,7 +10,10 @@ public class Main {
         Player p1 = new Player("RANGER", "eue");
 
         PlayerGroup g = new PlayerGroup(p, p1);
-        g.test();
+//        g.test();
+
+        int val = new Random().nextInt(5);
+        System.out.println(val);
     }
 
 

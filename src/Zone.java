@@ -14,6 +14,6 @@ public class Zone
     }
 
     private void generateWave(){
-        int random
+//        int random
     }
 }
