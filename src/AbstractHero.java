@@ -39,6 +39,11 @@ public abstract class AbstractHero
         //TODO: verifica daca item-ul respectiv e deja echipat
     }
 
+    boolean checkItem(Item item){
+        if(this.headItem.equals(item)) return true;
+        return false;
+    }
+
     void setSkill(int number, Skill s){
         if(!skills.contains(s))
             return;
