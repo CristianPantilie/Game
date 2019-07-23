@@ -1,13 +1,13 @@
 public class Item {
-    private final ItemType type;
+    private final itemSlot slot;
     private final int hitPoints;
     private final int mana;
     private final int strength;
     private final int dexterity;
     private final int intelligence;
 
-    public Item(ItemType type, int hitPoints, int mana, int strength, int dexterity, int intelligence) {
-        this.type = type;
+    public Item(itemSlot slot, int hitPoints, int mana, int strength, int dexterity, int intelligence) {
+        this.slot = slot;
         this.hitPoints = hitPoints;
         this.mana = mana;
         this.strength = strength;
@@ -17,8 +17,8 @@ public class Item {
         //TODO:skill bonus
     }
 
-    public ItemType getType() {
-        return type;
+    public itemSlot getSlot() {
+        return slot;
     }
 
     public int getHitPoints() {

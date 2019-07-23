@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-enum ItemType{HEAD, SHOULDERS, CHEST, HANDS, LEGS, FEET};
+enum itemSlot {HEAD, SHOULDERS, CHEST, HANDS, LEGS, FEET};
 
 public class GameManager {
     private static GameManager ourInstance = new GameManager();
