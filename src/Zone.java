@@ -2,9 +2,13 @@ public class Zone
 {
     private final int numberOfWaves;
 
-    public Zone(int numberOfWaves)
-    {
-        this.numberOfWaves = numberOfWaves;
+    PlayerGroup targetGroup;
 
+    public Zone(PlayerGroup targetGroup)
+    {
+        this.targetGroup = targetGroup;
+        this.numberOfWaves ;
+
+        int groupAvg = targetGroup.averageLevel();
     }
 }

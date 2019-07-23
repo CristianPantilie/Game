@@ -3,12 +3,12 @@ import java.util.List;
 
 public class Group
 {
-    private final int maxSize = 5;
+    final int MAXSIZE = 5;
 
     private List<AbstractHero> heroes = new ArrayList<>();
     Group(AbstractHero... heroes) {
         int i = 0;
-        while(i < maxSize && i < heroes.length){
+        while(i < MAXSIZE && i < heroes.length){
             this.heroes.add(heroes[i]);
             i++;
         }
@@ -20,7 +20,7 @@ public class Group
             heroes[i] = players[i].getHero();
         }
         int i = 0;
-        while(i < maxSize && i < heroes.length){
+        while(i < MAXSIZE && i < heroes.length){
             this.heroes.add(heroes[i]);
             i++;
         }

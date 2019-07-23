@@ -39,4 +39,6 @@ public class Player
     AbstractHero getHero(){
         return playerClass;
     }
+
+    int getLevel(){ return level; }
 }

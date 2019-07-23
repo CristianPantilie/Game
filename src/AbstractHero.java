@@ -65,8 +65,6 @@ public abstract class AbstractHero
         this.skills.add(s);
     }
 
-
-
     void decreaseHitPoints(int amount){
         hitPoints -= amount;
     }
