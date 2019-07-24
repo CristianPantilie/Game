@@ -1,6 +1,7 @@
+import Design.Player;
+import Design.PlayerGroup;
 import RNG.RNG;
-
-import java.util.Random;
+import UI.Menu;
 
 public class Main {
 
@@ -10,12 +11,11 @@ public class Main {
         Player p = new Player("RANGER", "eu");
         Player p1 = new Player("RANGER", "eue");
 
-        PlayerGroup g = new PlayerGroup(p, p1);
-//        g.test();
 
-//        int val = new RNG().nextDouble();
-//        if(val)
-        RNG r = new RNG();
+        Menu menu = new Menu();
+
+        menu.playerList();
+
 
     }
 

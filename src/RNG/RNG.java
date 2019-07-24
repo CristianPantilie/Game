@@ -1,5 +1,10 @@
 package RNG;
-import AbstractHero;
+import Design.AbstractHero;
+import Design.Fighter;
+import Design.Mage;
+import Design.Ranger;
+
+import java.util.Random;
 
 public class RNG
 {
@@ -19,7 +24,27 @@ public class RNG
         return generatedNumber;
     }
 
-    public AbstractHero generateMob(){
+    public AbstractHero generateMob(int targetLevel){
 
+        AbstractHero mob;
+
+        int mobLevel = new Random().nextInt(4) + targetLevel;
+
+        int mobType = new Random().nextInt(3);
+        switch(mobType + 1){
+            case 1:
+                mob = new Fighter(mobLevel);
+                break;
+            case 2:
+                mob = new Ranger(mobLevel);
+                break;
+            default:
+                mob = new Mage(mobLevel);
+                break;
+        }
+
+        return mob;
     }
+
+
 }

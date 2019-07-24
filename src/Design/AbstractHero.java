@@ -1,3 +1,5 @@
+package Design;
+
 import java.util.*;
 
 public abstract class AbstractHero
@@ -14,12 +16,12 @@ public abstract class AbstractHero
     private List<Skill> skills = new ArrayList<>();
 
     protected EnumMap<itemSlot,Item> equipment = new EnumMap<itemSlot,Item>(itemSlot.class);
-    /*   private Item headItem;
-    private Item shoulderItem;
-    private Item chestItem;
-    private Item handsItem;
-    private Item legsItem;
-    private Item feetItem;
+    /*   private Design.Item headItem;
+    private Design.Item shoulderItem;
+    private Design.Item chestItem;
+    private Design.Item handsItem;
+    private Design.Item legsItem;
+    private Design.Item feetItem;
     */
     private Skill firstSkill;
     private Skill secondSkill;
@@ -27,6 +29,12 @@ public abstract class AbstractHero
     private Skill fourthSkill;
 
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(this.getClass()).append(", hp: ");
+        return sb.toString();
+    }
 
     void equipItem(Item item){
         if(equipment.get(item.getSlot())!=null){

@@ -1,3 +1,5 @@
+package Design;
+
 public class Ranger extends AbstractHero
 {
     void addSkill(Skill s){
@@ -6,5 +8,18 @@ public class Ranger extends AbstractHero
             return;
         }
         super.addSkill(s);
+    }
+
+    public Ranger(){
+        this(1);
+    }
+
+    public Ranger(int level){
+        //TODO: generate stats for each level of the ranger
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
     }
 }

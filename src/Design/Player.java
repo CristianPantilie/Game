@@ -1,3 +1,5 @@
+package Design;
+
 public class Player
 {
     private final AbstractHero playerClass;
@@ -34,6 +36,14 @@ public class Player
         this.name = name;
         this.level = 1;
         this.gold = 10;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(name).append(", level: ").append(level).append(", gold: ").append(gold).append( ". ");
+        sb.append( playerClass.toString());
+        return sb.toString();
     }
 
     AbstractHero getHero(){

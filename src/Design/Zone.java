@@ -1,3 +1,5 @@
+package Design;
+
 import RNG.RNG;
 
 import java.util.ArrayList;
@@ -24,7 +26,7 @@ public class Zone
         int mobNumber = rng.generateMobNumber(75);
         List<AbstractHero> mobs = new ArrayList<>();
         for(int i = 0; i < mobNumber; i++){
-            mobs.add()
+//            mobs.add()
         }
     }
 }
