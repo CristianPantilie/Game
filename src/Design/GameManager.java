@@ -59,6 +59,15 @@ public class GameManager {
 
     }
 
+    public void giveSkill(String playerName, Skill s){
+        for(Player p : players){
+            if(p.getName().equals(playerName))
+                p.getHero().addSkill(s);
+        }
+    }
+
+
+
 
 
 }
