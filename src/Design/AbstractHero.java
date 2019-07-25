@@ -87,8 +87,6 @@ public abstract class AbstractHero
         }
     }
 
-
-
     void addSkill(Skill s){
         this.skills.add(s);
     }
@@ -99,6 +97,13 @@ public abstract class AbstractHero
 
     void increaseHitPoints(int amount){
         hitPoints += amount;
+    }
+
+
+    void action(){
+        //TODO:  meniu pentru alegerea uneia dintre actiuni
+        //TODO: meniu pentru alegerea unui target
+
     }
 
 }

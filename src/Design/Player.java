@@ -50,5 +50,8 @@ public class Player
         return playerClass;
     }
 
+
+
     int getLevel(){ return level; }
+    String getName(){ return name; }
 }
