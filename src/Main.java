@@ -20,7 +20,7 @@ public class Main {
         gameManager.createPlayer("MAGE", "patru");
         gameManager.createPlayer("MAGE", "cinci");
 
-
+        gameManager.play();
 
 
 
