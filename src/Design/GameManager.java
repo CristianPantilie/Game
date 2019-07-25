@@ -13,6 +13,12 @@ public class GameManager {
     }
 
     private GameManager() {
+        Skill Hit = new Skill("Hit",0,1,"MELEE",1,4,0,0);
+        availableSkills.add(Hit);
+        Skill Shoot = new Skill("Shoot",0,1,"RANGED",1,2,0,0);
+        availableSkills.add(Shoot);
+        Skill Stab = new Skill("Stab",0,1,"MELEE",1,3,0,0);
+        availableSkills.add(Hit);
     }
 
 
@@ -45,6 +51,11 @@ public class GameManager {
 
     public void createPlayer(String playerClass,  String name){
         players.add(new Player(playerClass, name));
+        if(playerClass.equals("FIGHTER")) {
+            giveSkill(name,availableSkills.get(0));} //adds Hit to Fighter class
+        else giveSkill(name,availableSkills.get(1)); //adds Shoot to Mage/Ranger class
+        if(playerClass.equals("RANGER")) {
+            giveSkill(name,availableSkills.get(3));} //adds Stab to Ranger class
     }
 
     public Player getPlayer(String name){

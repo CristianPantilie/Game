@@ -6,6 +6,7 @@ public class Skill {
     private final int  manaCost;
     private final int levelRequirement;
     private final String type;
+    private final String name;
 
     private int numberOfTargets;
     private int damageAmount;
@@ -13,7 +14,8 @@ public class Skill {
     private int shieldAmount;
 
 
-    public Skill(int manaCost, int levelRequirement, String type, int numberOfTargets, int damageAmount, int healAmount, int shieldAmount) {
+    public Skill(String name, int manaCost, int levelRequirement, String type, int numberOfTargets, int damageAmount, int healAmount, int shieldAmount) {
+        this.name = name;
         this.manaCost = manaCost;
         this.levelRequirement = levelRequirement;
         this.type = type;
@@ -22,10 +24,11 @@ public class Skill {
         this.healAmount = healAmount;
         this.shieldAmount = shieldAmount;
     }
-    //Skill Hit(0,1,"Hit",1,5,0,0)
+    //Skill Hit("Hit",0,1,"MELEE",1,3,0,0)
     //
 
     public Skill(AbstractHero p, Skill s){
+        this.name = s.name;
         this.manaCost = s.manaCost;
         this.levelRequirement = s.levelRequirement;
         this.type = s.type;
@@ -41,12 +44,4 @@ public class Skill {
     String getType(){
         return type;
     }
-
-
-
-
-
-
-
-
 }
