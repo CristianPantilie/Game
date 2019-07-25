@@ -53,5 +53,5 @@ public class Player
 
 
     int getLevel(){ return level; }
-    String getName(){ return name; }
+    public String getName(){ return name; }
 }

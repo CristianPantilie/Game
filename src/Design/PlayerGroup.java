@@ -6,12 +6,12 @@ import java.util.List;
 public class PlayerGroup extends Group
 {
     List<Player> playerList = new ArrayList<>();
-    PlayerGroup(Player... players){
+    PlayerGroup(List<Player> players){
         super(players);
 
         int i = 0;
-        while(i < MAXSIZE && i < players.length){
-            this.playerList.add(players[i]);
+        while(i < MAXSIZE && i < players.size()){
+            this.playerList.add(players.get(i));
             i++;
         }
     }
@@ -28,5 +28,11 @@ public class PlayerGroup extends Group
         return playerList;
     }
 
-
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for(Player p : playerList)
+            sb.append(p.toString()).append("\n");
+        return sb.toString();
+    }
 }

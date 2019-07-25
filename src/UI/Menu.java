@@ -30,8 +30,35 @@ public class Menu
 //
 //    }
 
-    void assembleGroup(){
-        System.out.println("");
+    public List<Player> assembleGroup(List<Player> availablePlayers){
+
+        for(Player p : availablePlayers){
+            System.out.println(p);
+        }
+        List<Player> participants = new ArrayList<>();
+        System.out.println("Type the name of the players who want to participate or type 'end' if you're done");
+
+        InputStreamReader isr = new InputStreamReader(System.in);
+        BufferedReader bf = new BufferedReader(isr);
+        try{
+            String input;
+            do{
+                input = bf.readLine();
+
+                for(Player p : availablePlayers){
+                    if(p.getName().equals(input)) {
+                        participants.add(p);
+                        System.out.println(p.getName() + " added!");
+                    }
+                }
+
+            }while(!input.equals("end"));
+
+        } catch(IOException e){
+            e.printStackTrace();
+        }
+
+        return participants;
     }
 
     void choosePosition(FightPlane plane, Player player){

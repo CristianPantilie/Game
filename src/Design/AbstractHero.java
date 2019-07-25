@@ -14,20 +14,10 @@ public abstract class AbstractHero
 
     private List<Item> inventory = new ArrayList<>();
     private List<Skill> skills = new ArrayList<>();
+    private List<Skill> activeSkills = new ArrayList<>();
+
 
     protected EnumMap<itemSlot,Item> equipment = new EnumMap<itemSlot,Item>(itemSlot.class);
-    /*   private Design.Item headItem;
-    private Design.Item shoulderItem;
-    private Design.Item chestItem;
-    private Design.Item handsItem;
-    private Design.Item legsItem;
-    private Design.Item feetItem;
-    */
-    private Skill firstSkill;
-    private Skill secondSkill;
-    private Skill thirdSkill;
-    private Skill fourthSkill;
-
 
     @Override
     public String toString() {
@@ -66,29 +56,18 @@ public abstract class AbstractHero
         return false;
     }
 
-
-    void setSkill(int number, Skill s){
-        if(!skills.contains(s))
-            return;
-
-        switch (number){
-            case 1:
-                firstSkill = new Skill(this, s);
-                break;
-            case 2:
-                secondSkill = new Skill(this, s);
-                break;
-            case 3:
-                thirdSkill = new Skill(this, s);
-                break;
-            case 4:
-                fourthSkill = new Skill(this, s);
-                break;
-        }
-    }
-
     void addSkill(Skill s){
         this.skills.add(s);
+    }
+    public Skill getActiveSkill(int i) {
+        return this.activeSkills.get(i);
+    }
+
+    public void setActiveSkill(int i,Skill s) {
+        this.activeSkills.set(i,s);
+    }
+    public int numberofActiveSkills(){
+        return this.activeSkills.size();
     }
 
     void decreaseHitPoints(int amount){
