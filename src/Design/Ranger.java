@@ -3,7 +3,7 @@ package Design;
 public class Ranger extends AbstractHero
 {
     void addSkill(Skill s){
-        if(!s.getType().equals("FIGHTER")){
+        if(s.getType().equals("FIGHTER")){
             System.out.println("Incompatible skill");
             return;
         }

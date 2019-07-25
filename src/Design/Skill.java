@@ -3,7 +3,7 @@ package Design;
 public class Skill {
 
 
-    private final int  manaCost;
+    private final int manaCost;
     private final int levelRequirement;
     private final String type;
     private final String name;
@@ -25,9 +25,8 @@ public class Skill {
         this.shieldAmount = shieldAmount;
     }
     //Skill Hit("Hit",0,1,"MELEE",1,3,0,0)
-    //
 
-    public Skill(AbstractHero p, Skill s){
+    public Skill(AbstractHero p, Skill s) {
         this.name = s.name;
         this.manaCost = s.manaCost;
         this.levelRequirement = s.levelRequirement;
@@ -35,13 +34,17 @@ public class Skill {
         //TODO: copiaza chestiile de baza din s si le modifica pentru eroul p pe baza statsurilor
     }
 
-    void activate(AbstractHero target){
+    void activate(AbstractHero target) {
         target.decreaseHitPoints(damageAmount);
         target.increaseHitPoints(healAmount);
         //TODO: shield (trebuie cu timp sau ceva)
     }
 
-    String getType(){
+    public String getType() {
         return type;
+    }
+
+    public String getName() {
+        return name;
     }
 }
