@@ -1,6 +1,7 @@
 package UI;
 
 import Design.GameManager;
+import Design.Player;
 
 public class Menu
 {
@@ -11,6 +12,10 @@ public class Menu
     }
 
     public void playerList(){
-        gameManager.test();
+
+    }
+
+//    static void chooseSkill(Player ){
+
     }
 }

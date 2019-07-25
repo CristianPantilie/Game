@@ -5,17 +5,17 @@ import RNG.RNG;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Zone
+public class Dungeon
 {
     private int numberOfWaves = 5; //TODO: random
     private String name;
     private String description;
 
-    PlayerGroup targetGroup;
+    private PlayerGroup targetGroup;
 
-    RNG rng = new RNG();
+    private RNG rng = new RNG();
 
-    public Zone(PlayerGroup targetGroup)
+    public Dungeon(PlayerGroup targetGroup)
     {
         this.targetGroup = targetGroup;
 
@@ -28,5 +28,7 @@ public class Zone
         for(int i = 0; i < mobNumber; i++){
 //            mobs.add()
         }
+        Group mobGroup = new Group(mobs.toArray(new AbstractHero[mobs.size()]));
+
     }
 }
