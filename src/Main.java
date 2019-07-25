@@ -99,18 +99,19 @@ public class Main {
         return matrix;
     }
 
-    public String[][] concatenateMatrices(String[][] matrix1, String[][] matrix2){
-        String[][] result = {};
-        for (int i =0; i<matrix1.length; i++){
-            for (int j =0; j<matrix1.length; j++){
-                result[i][j] = matrix1[i][j];
-            }}
-        for (int i =matrix1.length; i<matrix2.length; i++){
-            for (int j =matrix1.length; j<matrix2.length; j++){
-                result[i][j] = matrix2[i][j];
-            }}
-        return result;
-    }
+//    public String[][] concatenateMatrices(String[][] matrix1, String[][] matrix2){
+//        String[][] result = {};
+//        for (int i =0; i<matrix1.length; i++){
+//            for (int j =0; j<matrix1.length; j++){
+//                result[i][j] = matrix1[i][j];
+//            }}
+//        for (int i = 0; i < matrix2.length; i++) {
+//            for (int j = 0; j < matrix2.length; j++) {
+//                result[i][j+3] = matrix2[i][j];
+//            }
+//        }
+//        return result;
+//    }
 
 
 }
