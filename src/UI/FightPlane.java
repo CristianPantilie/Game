@@ -1,137 +1,75 @@
 package UI;
 
+import Design.AbstractHero;
+import Design.Player;
+import javafx.scene.layout.GridPane;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
 public class FightPlane {
 
-//    FightPlane(){
-//        this.makePlayerFormation(n);
-//    }
+    private final int GRID_SIZE = 3;
 
-    @Override
-    public String toString() {
+    private Position[][] playerFormation = new Position[GRID_SIZE][GRID_SIZE];
+    private Position[][] monsterFormation = new Position[GRID_SIZE][GRID_SIZE];
 
-        return "";
-    }
-
-    private String[][] makePlayerFormation(int n){
-//        int n = 5;
-        String[][] remainingMatrix={};
-        //String[][] finalLook={};
-        String[][] matrix = {{"1", "2", "3"}, {"4", "5", "6"}, {"7", "8", "9"}};
-        displayOptions(matrix);
-        List<String> inputs = new ArrayList<>();
-        while (n != 0) {
-            InputStreamReader isr = new InputStreamReader(System.in);
-            BufferedReader bf = new BufferedReader(isr);
-            System.out.println("Enter your option");
-
-            try {
-                String selection = bf.readLine();
-                if (inputs.contains(selection)) {
-                    System.out.println("Invalid selection");
-                    displayOptions(matrix);
-                    inputs.add(selection);
-                } else {
-                    inputs.add(selection);
-                     remainingMatrix = remainingOptions(matrix, selection);
-                    displayOptions(remainingMatrix);
-                    //finalLook = remainingMatrix;
-                    n--;
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-
-        }
-        return remainingMatrix;
-    }
-
-    private String[][] makeMonstersFormation(){
-        int monsters = 5;
-        String[][] monstersMatrix = {{"1", "2", "3"}, {"4", "5", "6"}, {"7", "8", "9"}};
-        List<String> monstersPositions = new ArrayList<>();
-        String[][] remainingMatrix2={};
-        while (monsters != 0) {
-            Random rand = new Random();
-            int r = rand.nextInt(9)+1;
-            String x = Integer.toString(r);
-            if (monstersPositions.contains(x)) {
-                monstersPositions.add(x);
-                while(monstersPositions.contains(x)){
-                    r = rand.nextInt(9)+1;
-                    x = Integer.toString(r);
-
-                }
-
-            } else {
-                monstersPositions.add(x);
-                remainingMatrix2 =remainingOptions(monstersMatrix, x);
-                monsters--;
+    FightPlane(){
+        for(int i = 0; i < 3; i++){
+            for(int j = 0; j < 3; j++){
+                playerFormation[i][j]  = new Position(i, j);
+                monsterFormation[i][j] = new Position(i, j);
             }
         }
-        //displayOptions(remainingMatrix2);
-
-    return remainingMatrix2;
     }
 
+    public void addToPosition(int i, int j, AbstractHero mob){
+        monsterFormation[i][j].add(mob);
+    }
 
+    void addToPosition(int i, int j, Player player){
+        playerFormation[i][j].add(player);
+    }
 
-    public void displayOptions(String[][] matrix){
-        for (int i =0; i<3; i++){
-            for (int j =0; j<3; j++){
-                System.out.print(matrix[i][j]+"   ");
+    void printCurrent(){
+        for(int i = 0; i < GRID_SIZE; i++){
+            for(int j = 0; j < 2 * GRID_SIZE; j++){
+                if(j < GRID_SIZE)
+                    System.out.print(playerFormation[i][j]);
+                else
+                    System.out.print(monsterFormation[i][j - GRID_SIZE]);
             }
             System.out.println();
         }
     }
 
-    public String[][] remainingOptions(String[][] matrix, String x){
-        for (int i =0; i<3; i++){
-            for (int j =0; j<3; j++){
-                if(matrix[i][j].equals(x))
-                    matrix[i][j ]= "*";
+    void printInitial(List<Integer> chosenOnes){
+        int c = 1;
+        for(int i = 0; i < GRID_SIZE; i++){
+            for(int j = 0; j < GRID_SIZE; j++){
+                if(chosenOnes.contains(c)) {
+                    System.out.println("*  ");
+                }
+                else {
+                    System.out.print(c + "  ");
+                    c++;
+                }
             }
+            System.out.println();
         }
 
-        return matrix;
     }
-
-    public String[][] concatenateMatrices(String[][] matrix1, String[][] matrix2){
-        String[][] result = new String[matrix1.length][matrix1.length+matrix2.length];
-        for (int i =0; i<matrix1.length; i++){
-            for (int j =0; j<matrix1.length; j++){
-                result[i][j] = matrix1[i][j];
-            }}
-
-        for (int i =0; i<matrix2.length; i++){
-            for (int j =0; j<matrix2.length; j++){
-                result[i][j+3] = matrix2[i][j];
-            }}
-        return result;
-    }
-
 
 
     public static void main(String[] args){
-        int n = 5;
+
         FightPlane fightPlane = new FightPlane();
-       String[][] playersFormation =  fightPlane.makePlayerFormation(5);
-       String[][] monstersFormation= fightPlane.makeMonstersFormation();
-       String[][] result = fightPlane.concatenateMatrices(playersFormation, monstersFormation);
-       System.out.println("Formations:");
-        for (int i =0; i<result.length; i++){
-            for (int j =0; j<result[i].length; j++){
-                System.out.print(result[i][j]+"   ");
-            }
-            System.out.println();
-        }
+
 
     }
 

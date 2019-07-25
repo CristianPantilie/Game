@@ -54,6 +54,7 @@ public class Player {
         return level;
     }
 
+
     String getName() {
         return name;
     }
@@ -82,4 +83,5 @@ public class Player {
             this.playerClass.setIntelligence(this.playerClass.getIntelligence() + 2);
         }
     }
+
 }

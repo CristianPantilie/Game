@@ -21,6 +21,7 @@ public abstract class AbstractHero
     private List<Skill> skills = new ArrayList<>();
     private List<Skill> activeSkills = new ArrayList<>();
 
+
     protected EnumMap<itemSlot,Item> equipment = new EnumMap<itemSlot,Item>(itemSlot.class);
 
     public AbstractHero(int hitPoints, int mana, int strength, int dexterity, int intelligence) {

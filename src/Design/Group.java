@@ -17,10 +17,10 @@ public class Group
         }
     }
 
-    Group(Player... players){
-        AbstractHero[] heroes = new AbstractHero[players.length];
-        for(int  i = 0; i < players.length; i++){
-            heroes[i] = players[i].getHero();
+    Group(List<Player> players){
+        AbstractHero[] heroes = new AbstractHero[players.size()];
+        for(int  i = 0; i < players.size(); i++){
+            heroes[i] = players.get(i).getHero();
         }
         int i = 0;
         while(i < MAXSIZE && i < heroes.length){

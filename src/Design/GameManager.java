@@ -1,5 +1,7 @@
 package Design;
 
+import UI.Menu;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -27,16 +29,19 @@ public class GameManager {
     private List<Player> players = new ArrayList<>();
     private List<Player> zones = new ArrayList<>();
 
-    void play() {
-        PlayerGroup group = assembleGroup();
+    public void play() {
+        System.out.println("ok");
+        Menu m = new Menu();
+        PlayerGroup group = assembleGroup(m);
+        System.out.println(group);
         selectDungeon(group);
     }
 
 
-    public PlayerGroup assembleGroup() {
-        //TODO: meniu pentru alegerea jucatorilor existenti pentru grup
+    public PlayerGroup assembleGroup(Menu m) {
+        List<Player> participants = m.assembleGroup(players);
 
-        return new PlayerGroup(players.get(0), players.get(1), players.get(2), players.get(3), players.get(4));
+        return new PlayerGroup(participants);
     }
 
     private void selectDungeon(PlayerGroup targetGroup) {
@@ -77,7 +82,7 @@ public class GameManager {
         for (Player p : players) {
             if (p.getName().equals(playerName)) {
                 p.getHero().addSkill(s); //skill is added in selectable skills for the hero
-                for (int i = 0; i < 3; i++) {
+                for (int i = 0; i < 3 && i < p.getHero().numberofActiveSkills(); i++) {
                     if (p.getHero().getActiveSkill(i) != null) {
                         p.getHero().setActiveSkill(i, s); //skill is added to empty slot in active skills
                     }
