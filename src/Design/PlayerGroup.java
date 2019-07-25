@@ -1,3 +1,5 @@
+package Design;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,5 +23,6 @@ public class PlayerGroup extends Group
         }
         return sum / playerList.size();
     }
+
 
 }

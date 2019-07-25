@@ -1,3 +1,5 @@
+package Design;
+
 public class Mage extends AbstractHero
 {
     void addSkill(Skill s){
@@ -6,5 +8,13 @@ public class Mage extends AbstractHero
             return;
         }
         super.addSkill(s);
+    }
+
+    public Mage(){
+        this(1);
+    }
+
+    public Mage(int level){
+        //TODO: generate stats for each level of the mage
     }
 }

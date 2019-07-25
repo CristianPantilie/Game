@@ -1,3 +1,5 @@
+package Design;
+
 public class Fighter extends AbstractHero
 {
 
@@ -7,6 +9,14 @@ public class Fighter extends AbstractHero
             return;
         }
         super.addSkill(s);
+    }
+
+    public Fighter(){
+        this(1);
+    }
+
+    public Fighter(int level){
+        //TODO: generate stats for each level of the fighter
     }
 
 }
