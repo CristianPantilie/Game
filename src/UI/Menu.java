@@ -11,6 +11,6 @@ public class Menu
     }
 
     public void playerList(){
-        gameManager.test();
+        //gameManager.test();
     }
 }
