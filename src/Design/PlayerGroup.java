@@ -24,5 +24,9 @@ public class PlayerGroup extends Group
         return sum / playerList.size();
     }
 
+    public List<Player> getPlayers(){
+        return playerList;
+    }
+
 
 }

@@ -13,6 +13,7 @@ public class GameManager {
     }
 
     private GameManager() {
+
     }
 
 
@@ -27,7 +28,8 @@ public class GameManager {
 
 
     public PlayerGroup assembleGroup(){
-        //TODO: meniu pentru alegerea jucatorilor existenti pentru grup
+
+
 
         return new PlayerGroup(players.get(0), players.get(1), players.get(2), players.get(3), players.get(4));
     }
