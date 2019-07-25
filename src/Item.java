@@ -16,7 +16,11 @@ public class Item {
         this.strength = strength;
         this.dexterity = dexterity;
         this.intelligence = intelligence;
-
+//item declaration example
+        //Item BattleAxe (HANDS,"Battle Axe",0,0,5,0,0)
+        //Item ScalpelDagger (HANDS,"Scalpel",0,0,0,5,0)
+        //Item TomeOfWisdom (HANDS,"Tome of Wisdom",0,10,0,0,5)
+        //Item PeasantCap (HEAD,"Peasant Hat",2,0,1,0,-1)
         //TODO:skill bonus
     }
 
