@@ -20,6 +20,7 @@ public class GameManager {
         availableSkills.add(Shoot);
         Skill Stab = new Skill("Stab", 0, 1, "MELEE", 1, 3, 0, 0);
         availableSkills.add(Stab);
+
     }
 
 
@@ -35,6 +36,7 @@ public class GameManager {
 
     public PlayerGroup assembleGroup() {
         //TODO: meniu pentru alegerea jucatorilor existenti pentru grup
+
 
         return new PlayerGroup(players.get(0), players.get(1), players.get(2), players.get(3), players.get(4));
     }
