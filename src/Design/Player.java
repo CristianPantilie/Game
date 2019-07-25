@@ -1,7 +1,6 @@
 package Design;
 
-public class Player
-{
+public class Player {
     private final AbstractHero playerClass;
     private final String name;
 
@@ -17,7 +16,7 @@ public class Player
 
     public Player(String playerClass, String name) {
 
-        switch (playerClass){
+        switch (playerClass) {
             case "FIGHTER":
                 this.playerClass = new Fighter();
                 break;
@@ -41,38 +40,46 @@ public class Player
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(name).append(", level: ").append(level).append(", gold: ").append(gold).append( ". ");
-        sb.append( playerClass.toString());
+        sb.append(name).append(", level: ").append(level).append(", gold: ").append(gold).append(". ");
+        sb.append(playerClass.toString());
         return sb.toString();
     }
 
-    AbstractHero getHero(){
+    AbstractHero getHero() {
         return playerClass;
     }
 
 
+    int getLevel() {
+        return level;
+    }
 
-    int getLevel(){ return level; }
-    String getName(){ return name; }
+    String getName() {
+        return name;
+    }
 
-    public void levelUp(){
+    public void levelUp() {
         this.level++;
-        if (this.playerClass.equals("FIGHTER")){
-            this.playerClass.setHitPoints(this.playerClass.getHitPoints()+3);
-            this.playerClass.setMana(this.playerClass.getMana()+1);
-            this.playerClass.setStrength(this.playerClass.getStrength()+2);
-            this.playerClass.setDexterity(this.playerClass.getDexterity()+1);
-            this.playerClass.setIntelligence(this.playerClass.getIntelligence()+1); }
-        if (this.playerClass.equals("RANGER")){
-            this.playerClass.setHitPoints(this.playerClass.getHitPoints()+2);
-            this.playerClass.setMana(this.playerClass.getMana()+1);
-            this.playerClass.setStrength(this.playerClass.getStrength()+1);
-            this.playerClass.setDexterity(this.playerClass.getDexterity()+2);
-            this.playerClass.setIntelligence(this.playerClass.getIntelligence()+1); }
-        if (this.playerClass.equals("MAGE")){
-            this.playerClass.setHitPoints(this.playerClass.getHitPoints()+1);
-            this.playerClass.setMana(this.playerClass.getMana()+3);
-            this.playerClass.setStrength(this.playerClass.getStrength()+1);
-            this.playerClass.setDexterity(this.playerClass.getDexterity()+1);
-            this.playerClass.setIntelligence(this.playerClass.getIntelligence()+2); }
+        if (this.playerClass.equals("FIGHTER")) {
+            this.playerClass.setHitPoints(this.playerClass.getHitPoints() + 3);
+            this.playerClass.setMana(this.playerClass.getMana() + 1);
+            this.playerClass.setStrength(this.playerClass.getStrength() + 2);
+            this.playerClass.setDexterity(this.playerClass.getDexterity() + 1);
+            this.playerClass.setIntelligence(this.playerClass.getIntelligence() + 1);
+        }
+        if (this.playerClass.equals("RANGER")) {
+            this.playerClass.setHitPoints(this.playerClass.getHitPoints() + 2);
+            this.playerClass.setMana(this.playerClass.getMana() + 1);
+            this.playerClass.setStrength(this.playerClass.getStrength() + 1);
+            this.playerClass.setDexterity(this.playerClass.getDexterity() + 2);
+            this.playerClass.setIntelligence(this.playerClass.getIntelligence() + 1);
+        }
+        if (this.playerClass.equals("MAGE")) {
+            this.playerClass.setHitPoints(this.playerClass.getHitPoints() + 1);
+            this.playerClass.setMana(this.playerClass.getMana() + 3);
+            this.playerClass.setStrength(this.playerClass.getStrength() + 1);
+            this.playerClass.setDexterity(this.playerClass.getDexterity() + 1);
+            this.playerClass.setIntelligence(this.playerClass.getIntelligence() + 2);
+        }
+    }
 }
