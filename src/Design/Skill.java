@@ -22,6 +22,8 @@ public class Skill {
         this.healAmount = healAmount;
         this.shieldAmount = shieldAmount;
     }
+    //Skill Hit(0,1,"Hit",1,5,0,0)
+    //
 
     public Skill(AbstractHero p, Skill s){
         this.manaCost = s.manaCost;
