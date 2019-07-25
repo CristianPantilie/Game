@@ -5,6 +5,8 @@ import java.util.*;
 public abstract class AbstractHero
 {
 
+
+
     //stats
     private int hitPoints;
     private int mana;
@@ -12,12 +14,23 @@ public abstract class AbstractHero
     private int dexterity;  //ranged damage, dodge chance, hit chance
     private int intelligence; //spell power, initiative
 
+
+    private int level;
+
     private List<Item> inventory = new ArrayList<>();
     private List<Skill> skills = new ArrayList<>();
     private List<Skill> activeSkills = new ArrayList<>();
 
 
     protected EnumMap<itemSlot,Item> equipment = new EnumMap<itemSlot,Item>(itemSlot.class);
+
+    public AbstractHero(int hitPoints, int mana, int strength, int dexterity, int intelligence) {
+        this.hitPoints = hitPoints;
+        this.mana = mana;
+        this.strength = strength;
+        this.dexterity = dexterity;
+        this.intelligence = intelligence;
+    }
 
     @Override
     public String toString() {
@@ -84,5 +97,51 @@ public abstract class AbstractHero
         //TODO: meniu pentru alegerea unui target
 
     }
+    public int getLevel() {
+        return level;
+    }
 
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public int getHitPoints() {
+        return hitPoints;
+    }
+
+    public void setHitPoints(int hitPoints) {
+        this.hitPoints = hitPoints;
+    }
+
+    public int getMana() {
+        return mana;
+    }
+
+    public void setMana(int mana) {
+        this.mana = mana;
+    }
+
+    public int getStrength() {
+        return strength;
+    }
+
+    public void setStrength(int strength) {
+        this.strength = strength;
+    }
+
+    public int getDexterity() {
+        return dexterity;
+    }
+
+    public void setDexterity(int dexterity) {
+        this.dexterity = dexterity;
+    }
+
+    public int getIntelligence() {
+        return intelligence;
+    }
+
+    public void setIntelligence(int intelligence) {
+        this.intelligence = intelligence;
+    }
 }

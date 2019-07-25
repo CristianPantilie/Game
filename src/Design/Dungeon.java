@@ -26,7 +26,7 @@ public class Dungeon
         int mobNumber = rng.generateMobNumber(75);
         List<AbstractHero> mobs = new ArrayList<>();
         for(int i = 0; i < mobNumber; i++){
-//            mobs.add()
+         //   mobs.add(rng.generateMob())
         }
         Group mobGroup = new Group(mobs.toArray(new AbstractHero[mobs.size()]));
 
