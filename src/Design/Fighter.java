@@ -12,11 +12,14 @@ public class Fighter extends AbstractHero
     }
 
     public Fighter(){
-        this(1);
+        super(30,10,15,10,5);
+        this.setLevel(1);
+
     }
 
     public Fighter(int level){
         //TODO: generate stats for each level of the fighter
+        super(30+level*3,10,15+level,10,5);
     }
 
 }

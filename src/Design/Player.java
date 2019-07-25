@@ -8,12 +8,12 @@ public class Player
     //attributes
     private int xp;
     private int xpToNextLevel;
-    private int level;
     private int statPoints;
     private int skillPoints;
     private int statPointsPerLevel;
     private int skillPointsPerLevel;  //subunitar, sa se poata lua un skill la cateva nivele
     private int gold;
+    private int level;
 
     public Player(String playerClass, String name) {
 
@@ -34,8 +34,8 @@ public class Player
 
 
         this.name = name;
-        this.level = 1;
         this.gold = 10;
+        this.level = 1;
     }
 
     @Override
@@ -54,4 +54,25 @@ public class Player
 
     int getLevel(){ return level; }
     String getName(){ return name; }
+
+    public void levelUp(){
+        this.level++;
+        if (this.playerClass.equals("FIGHTER")){
+            this.playerClass.setHitPoints(this.playerClass.getHitPoints()+3);
+            this.playerClass.setMana(this.playerClass.getMana()+1);
+            this.playerClass.setStrength(this.playerClass.getStrength()+2);
+            this.playerClass.setDexterity(this.playerClass.getDexterity()+1);
+            this.playerClass.setIntelligence(this.playerClass.getIntelligence()+1); }
+        if (this.playerClass.equals("RANGER")){
+            this.playerClass.setHitPoints(this.playerClass.getHitPoints()+2);
+            this.playerClass.setMana(this.playerClass.getMana()+1);
+            this.playerClass.setStrength(this.playerClass.getStrength()+1);
+            this.playerClass.setDexterity(this.playerClass.getDexterity()+2);
+            this.playerClass.setIntelligence(this.playerClass.getIntelligence()+1); }
+        if (this.playerClass.equals("MAGE")){
+            this.playerClass.setHitPoints(this.playerClass.getHitPoints()+1);
+            this.playerClass.setMana(this.playerClass.getMana()+3);
+            this.playerClass.setStrength(this.playerClass.getStrength()+1);
+            this.playerClass.setDexterity(this.playerClass.getDexterity()+1);
+            this.playerClass.setIntelligence(this.playerClass.getIntelligence()+2); }
 }
