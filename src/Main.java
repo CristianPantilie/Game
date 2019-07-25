@@ -21,5 +21,7 @@ public class Main {
         gameManager.createPlayer("MAGE", "cinci");
 
 
+
+
     }
 }
