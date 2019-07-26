@@ -19,7 +19,7 @@ public class FightPlane {
     private Position[][] playerFormation = new Position[GRID_SIZE][GRID_SIZE];
     private Position[][] monsterFormation = new Position[GRID_SIZE][GRID_SIZE];
 
-    FightPlane(){
+    public FightPlane(){
         for(int i = 0; i < 3; i++){
             for(int j = 0; j < 3; j++){
                 playerFormation[i][j]  = new Position(i, j);
@@ -36,13 +36,13 @@ public class FightPlane {
         playerFormation[i][j].add(player);
     }
 
-    void printCurrent(){
+    public void printCurrent(){
         for(int i = 0; i < GRID_SIZE; i++){
             for(int j = 0; j < 2 * GRID_SIZE; j++){
                 if(j < GRID_SIZE)
-                    System.out.print(playerFormation[i][j]);
+                    System.out.print(playerFormation[i][j] + " ");
                 else
-                    System.out.print(monsterFormation[i][j - GRID_SIZE]);
+                    System.out.print(monsterFormation[i][j - GRID_SIZE] + " ");
             }
             System.out.println();
         }
@@ -52,8 +52,9 @@ public class FightPlane {
         int c = 1;
         for(int i = 0; i < GRID_SIZE; i++){
             for(int j = 0; j < GRID_SIZE; j++){
-                if(chosenOnes.contains(c)) {
-                    System.out.println("*  ");
+                if(playerFormation[i][j].getPlayer() != null) {
+                    System.out.print("*  ");
+                    c++;
                 }
                 else {
                     System.out.print(c + "  ");
@@ -64,17 +65,5 @@ public class FightPlane {
         }
 
     }
-
-
-    public static void main(String[] args){
-
-        FightPlane fightPlane = new FightPlane();
-
-
-    }
-
-
-
-
 
 }
