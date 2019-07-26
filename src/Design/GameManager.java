@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-enum itemSlot {HEAD, SHOULDERS, CHEST, HANDS, LEGS, FEET};
+
 
 public class GameManager {
     private static GameManager ourInstance = new GameManager();
