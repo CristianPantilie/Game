@@ -1,5 +1,8 @@
 package Design;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.*;
 
 public abstract class AbstractHero
@@ -91,9 +94,39 @@ public abstract class AbstractHero
         hitPoints += amount;
     }
 
-
+    //TODO:  meniu pentru alegerea uneia dintre actiuni
     void action(){
-        //TODO:  meniu pentru alegerea uneia dintre actiuni
+        System.out.println("Choose a skill from:");
+        for(Skill skill : skills){
+            System.out.println(skill);
+        }
+        boolean repeat = true;
+
+        InputStreamReader isr = new InputStreamReader(System.in);
+        BufferedReader bf = new BufferedReader(isr);
+    while(repeat == true) {
+        try {
+            String selection = bf.readLine();
+            for (Skill skill : skills) {
+                if (skill.getName().equals(selection)) {
+                    activeSkills.add(skill);
+                    skills.remove(skill);
+                    System.out.println("Do you need another skill?");
+                    String choise = bf.readLine();
+                    if (choise.equals("yes")) {
+                        repeat = true;
+                    } else  repeat = false;
+
+                } else {
+                    System.out.println("Invalid skill!");
+                    repeat = true;
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
         //TODO: meniu pentru alegerea unui target
 
     }
