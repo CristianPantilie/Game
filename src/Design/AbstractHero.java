@@ -5,6 +5,8 @@ import java.util.*;
 public abstract class AbstractHero
 {
 
+
+
     //stats
     private int hitPoints;
     private int mana;
@@ -12,22 +14,23 @@ public abstract class AbstractHero
     private int dexterity;  //ranged damage, dodge chance, hit chance
     private int intelligence; //spell power, initiative
 
+
+    private int level;
+
     private List<Item> inventory = new ArrayList<>();
     private List<Skill> skills = new ArrayList<>();
+    private List<Skill> activeSkills = new ArrayList<>();
+
 
     protected EnumMap<itemSlot,Item> equipment = new EnumMap<itemSlot,Item>(itemSlot.class);
-    /*   private Design.Item headItem;
-    private Design.Item shoulderItem;
-    private Design.Item chestItem;
-    private Design.Item handsItem;
-    private Design.Item legsItem;
-    private Design.Item feetItem;
-    */
-    private Skill firstSkill;
-    private Skill secondSkill;
-    private Skill thirdSkill;
-    private Skill fourthSkill;
 
+    public AbstractHero(int hitPoints, int mana, int strength, int dexterity, int intelligence) {
+        this.hitPoints = hitPoints;
+        this.mana = mana;
+        this.strength = strength;
+        this.dexterity = dexterity;
+        this.intelligence = intelligence;
+    }
 
     @Override
     public String toString() {
@@ -66,29 +69,18 @@ public abstract class AbstractHero
         return false;
     }
 
-
-    void setSkill(int number, Skill s){
-        if(!skills.contains(s))
-            return;
-
-        switch (number){
-            case 1:
-                firstSkill = new Skill(this, s);
-                break;
-            case 2:
-                secondSkill = new Skill(this, s);
-                break;
-            case 3:
-                thirdSkill = new Skill(this, s);
-                break;
-            case 4:
-                fourthSkill = new Skill(this, s);
-                break;
-        }
-    }
-
     void addSkill(Skill s){
         this.skills.add(s);
+    }
+    public Skill getActiveSkill(int i) {
+        return this.activeSkills.get(i);
+    }
+
+    public void setActiveSkill(int i,Skill s) {
+        this.activeSkills.set(i,s);
+    }
+    public int numberofActiveSkills(){
+        return this.activeSkills.size();
     }
 
     void decreaseHitPoints(int amount){
@@ -105,5 +97,51 @@ public abstract class AbstractHero
         //TODO: meniu pentru alegerea unui target
 
     }
+    public int getLevel() {
+        return level;
+    }
 
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public int getHitPoints() {
+        return hitPoints;
+    }
+
+    public void setHitPoints(int hitPoints) {
+        this.hitPoints = hitPoints;
+    }
+
+    public int getMana() {
+        return mana;
+    }
+
+    public void setMana(int mana) {
+        this.mana = mana;
+    }
+
+    public int getStrength() {
+        return strength;
+    }
+
+    public void setStrength(int strength) {
+        this.strength = strength;
+    }
+
+    public int getDexterity() {
+        return dexterity;
+    }
+
+    public void setDexterity(int dexterity) {
+        this.dexterity = dexterity;
+    }
+
+    public int getIntelligence() {
+        return intelligence;
+    }
+
+    public void setIntelligence(int intelligence) {
+        this.intelligence = intelligence;
+    }
 }

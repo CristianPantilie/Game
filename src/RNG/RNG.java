@@ -3,7 +3,10 @@ import Design.AbstractHero;
 import Design.Fighter;
 import Design.Mage;
 import Design.Ranger;
+import UI.FightPlane;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class RNG
@@ -46,6 +49,21 @@ public class RNG
         return mob;
     }
 
+    public void generateMonsterFormation(FightPlane plane, List<AbstractHero> monsters){
+        int currentMonsterIndex = monsters.size();
+        List<Integer> chosenPositions = new ArrayList<>();
 
+        while(currentMonsterIndex != 0){
+            Random rand = new Random();
+            int r = rand.nextInt(9) + 1;
 
+            while(chosenPositions.contains(r)){
+                r = rand.nextInt(9) + 1;
+            }
+            chosenPositions.add(r);
+            currentMonsterIndex--;
+
+            plane.addToPosition(r / 3, (r - 1) % 3, monsters.get(currentMonsterIndex));
+        }
+    }
 }
