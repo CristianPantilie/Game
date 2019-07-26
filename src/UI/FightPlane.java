@@ -1,9 +1,13 @@
 package UI;
 
+import Design.Player;
+import sun.plugin.javascript.navig.Array;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -24,6 +28,7 @@ public class FightPlane {
         String[][] remainingMatrix={};
         //String[][] finalLook={};
         String[][] matrix = {{"1", "2", "3"}, {"4", "5", "6"}, {"7", "8", "9"}};
+        List<String> numbers = new ArrayList<>(Arrays.asList("1", "2", "3", "4", "5", "6", "7", "8", "9"));
         displayOptions(matrix);
         List<String> inputs = new ArrayList<>();
         while (n != 0) {
@@ -33,7 +38,7 @@ public class FightPlane {
 
             try {
                 String selection = bf.readLine();
-                if (inputs.contains(selection)) {
+                if (inputs.contains(selection) || !numbers.contains(selection)) {
                     System.out.println("Invalid selection");
                     displayOptions(matrix);
                     inputs.add(selection);
@@ -119,18 +124,81 @@ public class FightPlane {
 
 
 
+
+
+
+
+
+
+
+
+    public void getPlayerDecision(Player player, String[][] gameFormation) {
+        boolean bool = false;
+        InputStreamReader isr = new InputStreamReader(System.in);
+        BufferedReader bf = new BufferedReader(isr);
+
+        List<String> numbers = new ArrayList<>(Arrays.asList("1", "2", "3", "4", "5", "6", "7", "8", "9"));
+
+        while(bool ==  false) {
+            System.out.println("Enter the position you want to attack");
+
+                try {
+                String selection = bf.readLine();
+                if (!numbers.contains(selection) || !checkIfMonsterExist(selection, gameFormation)) {
+                    System.out.println("Invalid selection");
+                    displayGameFormations(gameFormation);
+                    bool = false;
+                }else  bool=true;
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
+    }
+
+
+
+    public boolean checkIfMonsterExist(String selected,String[][] gameFormation){
+        int c =0;
+        for (int i =0; i<gameFormation.length; i++){
+            for (int j =3; j<gameFormation[i].length; j++){
+              c = c+1;
+              if(c == Integer.parseInt(selected) && gameFormation[i][j].equals("*")) return true;
+            }}
+
+        return false;
+    }
+
+
+    public void displayGameFormations(String[][] result){
+        System.out.println("Formations:");
+        for (int i =0; i<result.length; i++){
+            for (int j =0; j<result[i].length; j++){
+                System.out.print(result[i][j]+"   ");
+            }
+            System.out.println();
+        }
+    }
+
+
+
+
+
+
+
     public static void main(String[] args){
         int n = 5;
         FightPlane fightPlane = new FightPlane();
        String[][] playersFormation =  fightPlane.makePlayerFormation(5);
        String[][] monstersFormation= fightPlane.makeMonstersFormation();
        String[][] result = fightPlane.concatenateMatrices(playersFormation, monstersFormation);
-       System.out.println("Formations:");
-        for (int i =0; i<result.length; i++){
-            for (int j =0; j<result[i].length; j++){
-                System.out.print(result[i][j]+"   ");
-            }
-            System.out.println();
+
+       fightPlane.displayGameFormations(result);
+
+        Player p = new Player("FIGHTER", "PLAYER");
+
+            fightPlane.getPlayerDecision( p, result);
         }
 
     }
@@ -139,4 +207,6 @@ public class FightPlane {
 
 
 
-}
+
+
+
