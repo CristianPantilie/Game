@@ -30,11 +30,11 @@ public class GameManager {
     private List<Player> zones = new ArrayList<>();
 
     public void play() {
-        System.out.println("ok");
         Menu m = new Menu();
         PlayerGroup group = assembleGroup(m);
         System.out.println(group);
-        selectDungeon(group);
+        Dungeon d = selectDungeon(group);
+        d.fight();
     }
 
 
@@ -44,14 +44,9 @@ public class GameManager {
         return new PlayerGroup(participants);
     }
 
-    private void selectDungeon(PlayerGroup targetGroup) {
+    private Dungeon selectDungeon(PlayerGroup targetGroup) {
         //TODO: meniu pentru selectarea zonei dintr-o lista de zone generate
-        Dungeon d = new Dungeon(targetGroup);
-
-    }
-
-
-    private void fight() {
+        return new Dungeon(targetGroup);
 
     }
 
@@ -74,9 +69,6 @@ public class GameManager {
         return null;
     }
 
-    public void makeZone() {
-
-    }
 
     public void giveSkill(String playerName, Skill s) {
         for (Player p : players) {
@@ -92,7 +84,6 @@ public class GameManager {
                 }
             }
         }
-
     }
 
 

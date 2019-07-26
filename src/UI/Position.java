@@ -16,6 +16,14 @@ public class Position {
         player = null;
     }
 
+    @Override
+    public String toString() {
+        if(this.player != null)
+            return player.getName();
+        else
+            return "***";
+    }
+
     void add(AbstractHero mob){
         this.mob = mob;
     }

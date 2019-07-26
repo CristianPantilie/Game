@@ -1,6 +1,8 @@
 package Design;
 
 import RNG.RNG;
+import UI.FightPlane;
+import UI.Menu;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +31,12 @@ public class Dungeon
          //   mobs.add(rng.generateMob())
         }
         Group mobGroup = new Group(mobs.toArray(new AbstractHero[mobs.size()]));
+    }
 
+    public void fight(){
+        Menu m = new Menu();
+        FightPlane plane = new FightPlane();
+        m.choosePosition(plane, targetGroup.getPlayers());
+        plane.printCurrent();
     }
 }
