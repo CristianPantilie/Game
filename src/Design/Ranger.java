@@ -11,11 +11,13 @@ public class Ranger extends AbstractHero
     }
 
     public Ranger(){
-        this(1);
+        super(25,20,10,15,5);
+        this.setLevel(1);
     }
 
     public Ranger(int level){
         //TODO: generate stats for each level of the ranger
+        super(25+level*2,20,10,15+level*2,5);
     }
 
     @Override
