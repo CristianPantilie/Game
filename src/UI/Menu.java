@@ -3,6 +3,7 @@ package UI;
 import Design.GameManager;
 import Design.Player;
 import Design.PlayerGroup;
+import Design.Skill;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -83,8 +84,46 @@ public class Menu
                 e.printStackTrace();
             }
         }
+    }
 
-
+    public void chooseActionInFight(Player player){
 
     }
+
+
+    public void changeAvailableSkills(Player player){
+        System.out.println("Choose a skill from:");
+        List<Skill> availableSkills = player.getHero().getActiveSkills();
+        for(Skill skill : availableSkills){
+            System.out.println(skill);
+        }
+        boolean repeat = true;
+
+        InputStreamReader isr = new InputStreamReader(System.in);
+        BufferedReader bf = new BufferedReader(isr);
+        while(repeat) {
+            try {
+                String selection = bf.readLine();
+                for (Skill skill : availableSkills) {
+                    if (skill.getName().equals(selection)) {
+//                        activeSkills.add(skill);
+//                        skills.remove(skill);
+                        System.out.println("Do you need another skill?");
+                        String choise = bf.readLine();
+                        if (choise.equals("yes")) {
+                            repeat = true;
+                        } else  repeat = false;
+
+                    } else {
+                        System.out.println("Invalid skill!");
+                        repeat = true;
+                    }
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
 }

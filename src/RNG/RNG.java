@@ -66,4 +66,8 @@ public class RNG
             plane.addToPosition(r / 3, (r - 1) % 3, monsters.get(currentMonsterIndex));
         }
     }
+
+    public void generateMobName(){
+
+    }
 }

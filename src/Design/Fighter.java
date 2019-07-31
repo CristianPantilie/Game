@@ -22,4 +22,8 @@ public class Fighter extends AbstractHero
         super(30+level*3,10,15+level,10,5);
     }
 
+    @Override
+    public String toString() {
+        return "Fighter";
+    }
 }

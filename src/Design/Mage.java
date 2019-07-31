@@ -19,4 +19,9 @@ public class Mage extends AbstractHero
         //TODO: generate stats for each level of the mage
         super(20+level*2,30+level*3,5,10,15+level*2);
     }
+
+    @Override
+    public String toString() {
+        return "Mage";
+    }
 }

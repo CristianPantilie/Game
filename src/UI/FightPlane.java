@@ -40,11 +40,11 @@ public class FightPlane {
         for(int i = 0; i < GRID_SIZE; i++){
             for(int j = 0; j < 2 * GRID_SIZE; j++){
                 if(j < GRID_SIZE)
-                    System.out.print(playerFormation[i][j] + " ");
+                    System.out.print(playerFormation[i][j] + "                        ");
                 else
-                    System.out.print(monsterFormation[i][j - GRID_SIZE] + " ");
+                    System.out.print(monsterFormation[i][j - GRID_SIZE] + "                        ");
             }
-            System.out.println();
+            System.out.println("\n\n\n\n");
         }
     }
 
@@ -63,7 +63,5 @@ public class FightPlane {
             }
             System.out.println();
         }
-
     }
-
 }

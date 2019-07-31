@@ -20,6 +20,8 @@ public class Position {
     public String toString() {
         if(this.player != null)
             return player.getName();
+        else if(this.mob != null)
+            return mob.toString();
         else
             return "***";
     }
