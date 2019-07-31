@@ -1,26 +1,24 @@
 package Design;
 
-
 public class Player
 {
     private AbstractHero playerClass;
     private AbstractHero dungeonCopy;
-
     private final String name;
 
     //attributes
     private int xp;
     private int xpToNextLevel;
+    private int level;
     private int statPoints;
     private int skillPoints;
     private int statPointsPerLevel;
     private int skillPointsPerLevel;  //subunitar, sa se poata lua un skill la cateva nivele
     private int gold;
-    private int level;
 
     public Player(String playerClass, String name) {
 
-        switch (playerClass) {
+        switch (playerClass){
             case "FIGHTER":
                 this.playerClass = new Fighter();
                 break;
@@ -37,57 +35,24 @@ public class Player
 
 
         this.name = name;
-        this.gold = 10;
         this.level = 1;
+        this.gold = 10;
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(name).append(", level: ").append(level).append(", gold: ").append(gold).append(". ");
-        sb.append(playerClass.toString());
+        sb.append(name).append(", level: ").append(level).append(", gold: ").append(gold).append( ". ");
+        sb.append( playerClass.toString());
         return sb.toString();
     }
 
-
     public AbstractHero getHero(){
-
         return playerClass;
     }
 
 
-    int getLevel() {
-        return level;
-    }
 
-
-    public String getName() {
-        return name;
-    }
-
-    public void levelUp() {
-        this.level++;
-        if (this.playerClass.equals("FIGHTER")) {
-            this.playerClass.setHitPoints(this.playerClass.getHitPoints() + 3);
-            this.playerClass.setMana(this.playerClass.getMana() + 1);
-            this.playerClass.setStrength(this.playerClass.getStrength() + 2);
-            this.playerClass.setDexterity(this.playerClass.getDexterity() + 1);
-            this.playerClass.setIntelligence(this.playerClass.getIntelligence() + 1);
-        }
-        if (this.playerClass.equals("RANGER")) {
-            this.playerClass.setHitPoints(this.playerClass.getHitPoints() + 2);
-            this.playerClass.setMana(this.playerClass.getMana() + 1);
-            this.playerClass.setStrength(this.playerClass.getStrength() + 1);
-            this.playerClass.setDexterity(this.playerClass.getDexterity() + 2);
-            this.playerClass.setIntelligence(this.playerClass.getIntelligence() + 1);
-        }
-        if (this.playerClass.equals("MAGE")) {
-            this.playerClass.setHitPoints(this.playerClass.getHitPoints() + 1);
-            this.playerClass.setMana(this.playerClass.getMana() + 3);
-            this.playerClass.setStrength(this.playerClass.getStrength() + 1);
-            this.playerClass.setDexterity(this.playerClass.getDexterity() + 1);
-            this.playerClass.setIntelligence(this.playerClass.getIntelligence() + 2);
-        }
-    }
-
+    int getLevel(){ return level; }
+    public String getName(){ return name; }
 }
