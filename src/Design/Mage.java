@@ -17,4 +17,9 @@ public class Mage extends AbstractHero
     public Mage(int level){
         //TODO: generate stats for each level of the mage
     }
+
+    @Override
+    public String toString() {
+        return "Mage";
+    }
 }

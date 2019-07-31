@@ -24,19 +24,23 @@ public class Dungeon
         int groupAvg = targetGroup.averageLevel();
     }
 
-    private void generateWave(){
+    private Group generateWave(){
         int mobNumber = rng.generateMobNumber(75);
         List<AbstractHero> mobs = new ArrayList<>();
         for(int i = 0; i < mobNumber; i++){
-//            mobs.add()
+            mobs.add(rng.generateMob(targetGroup.averageLevel()));
         }
-        Group mobGroup = new Group(mobs.toArray(new AbstractHero[mobs.size()]));
+        return new Group(mobs.toArray(new AbstractHero[mobs.size()]));
     }
 
     public void fight(){
         Menu m = new Menu();
         FightPlane plane = new FightPlane();
         m.choosePosition(plane, targetGroup.getPlayers());
+        rng.generateMonsterFormation(plane, generateWave().groupList());
         plane.printCurrent();
+
     }
+
+
 }

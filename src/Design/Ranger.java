@@ -20,6 +20,6 @@ public class Ranger extends AbstractHero
 
     @Override
     public String toString() {
-        return super.toString();
+        return "Ranger";
     }
 }

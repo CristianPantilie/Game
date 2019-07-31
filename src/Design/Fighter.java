@@ -19,4 +19,8 @@ public class Fighter extends AbstractHero
         //TODO: generate stats for each level of the fighter
     }
 
+    @Override
+    public String toString() {
+        return "Fighter";
+    }
 }

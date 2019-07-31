@@ -16,7 +16,6 @@ public abstract class AbstractHero
     private List<Skill> skills = new ArrayList<>();
     private List<Skill> activeSkills = new ArrayList<>();
 
-
     protected EnumMap<itemSlot,Item> equipment = new EnumMap<itemSlot,Item>(itemSlot.class);
 
     @Override
@@ -63,9 +62,12 @@ public abstract class AbstractHero
         return this.activeSkills.get(i);
     }
 
+    public List<Skill> getActiveSkills() { return this.activeSkills; }
+
     public void setActiveSkill(int i,Skill s) {
         this.activeSkills.set(i,s);
     }
+
     public int numberofActiveSkills(){
         return this.activeSkills.size();
     }

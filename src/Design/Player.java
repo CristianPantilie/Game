@@ -2,7 +2,8 @@ package Design;
 
 public class Player
 {
-    private final AbstractHero playerClass;
+    private AbstractHero playerClass;
+    private AbstractHero dungeonCopy;
     private final String name;
 
     //attributes
@@ -46,7 +47,7 @@ public class Player
         return sb.toString();
     }
 
-    AbstractHero getHero(){
+    public AbstractHero getHero(){
         return playerClass;
     }
 

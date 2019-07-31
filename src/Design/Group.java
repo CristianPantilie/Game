@@ -43,6 +43,10 @@ public class Group
         }
     }
 
+    public List<AbstractHero> groupList(){
+        return heroes;
+    }
+
 
 
 }
