@@ -1,20 +1,14 @@
 package UI;
 
-import Design.AbstractHero;
-import Design.Player;
-import javafx.scene.layout.GridPane;
+import Design.Units.Mob;
+import Design.Units.Player;
+import Design.Units.Unit;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
 
 public class FightPlane {
 
-    private final int GRID_SIZE = 3;
+    public static final int GRID_SIZE = 3;
 
     private Position[][] playerFormation = new Position[GRID_SIZE][GRID_SIZE];
     private Position[][] monsterFormation = new Position[GRID_SIZE][GRID_SIZE];
@@ -28,7 +22,7 @@ public class FightPlane {
         }
     }
 
-    public void addToPosition(int i, int j, AbstractHero mob){
+    public void addToPosition(int i, int j, Mob mob){
         monsterFormation[i][j].add(mob);
     }
 
@@ -48,11 +42,33 @@ public class FightPlane {
         }
     }
 
+    public Position getPosition(Unit unit){
+        if(unit instanceof Player) {
+            for(int i = 0; i < GRID_SIZE; i++){
+                for(int j = 0; j < GRID_SIZE; j++){
+                    Position position = playerFormation[i][j];
+                    if(position.hasPlayer() && position.getOccuppant().equals(unit))
+                        return position;
+                }
+            }
+        }
+        else{
+            for(int i = 0; i < GRID_SIZE; i++){
+                for(int j = 0; j < GRID_SIZE; j++){
+                    Position position = monsterFormation[i][j];
+                    if(position.hasMob() && position.getOccuppant().equals(unit))
+                        return position;
+                }
+            }
+        }
+        return null;
+    }
+
     void printInitial(List<Integer> chosenOnes){
         int c = 1;
         for(int i = 0; i < GRID_SIZE; i++){
             for(int j = 0; j < GRID_SIZE; j++){
-                if(playerFormation[i][j].getPlayer() != null) {
+                if(playerFormation[i][j].hasPlayer()) {
                     System.out.print("*  ");
                     c++;
                 }
