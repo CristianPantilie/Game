@@ -1,4 +1,4 @@
-package Design;
+package Design.AbilitiesAndItems;
 
 import java.util.List;
 

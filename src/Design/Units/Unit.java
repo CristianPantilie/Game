@@ -1,6 +1,6 @@
 package Design.Units;
 
-import Design.Abilities.Ability;
+import Design.AbilitiesAndItems.Ability;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +21,7 @@ abstract public class Unit {
     private int skillPointsPerLevel;  //subunitar, sa se poata lua un skill la cateva nivele
     private int gold;
 
-    List<Ability> abilities = new ArrayList<>();
+    private List<Ability> abilities = new ArrayList<>();
 
 
     Unit(String name, String heroType, int level){
@@ -48,21 +48,27 @@ abstract public class Unit {
         fightHero = null;
     }
 
-    public void giveAbility(Ability s){
-        abilities.add(s);
+    public void addAbility(Ability a){
+        if(this.baseHero.compatibleAbilities().contains(a.getType())) {
+            abilities.add(a);
+            baseHero.enableAbility(a);
+            //TODO: meniu pentru a ii permite utilizatorului sa isi aleaga abilitatile active (skillswap comentat in gamemanager)
+        }
+        else
+            System.out.println("Incompatible ability");
     }
 
-    public void enableAbility(String abilityName){
-        for(Ability a : abilities){
-            if(a.getName().equals(abilityName))
-                baseHero.enableAbility(a);
-        }
+    public void enableAbility(Ability ability){
+        if(abilities.contains(ability))
+            baseHero.enableAbility(ability);
     }
 
     void getXP(int amount){
         this.xp += amount;
         //TODO: check for next level threshold
     }
+
+    int getDexterity(){ return fightHero.getDexterity();}
 
     public boolean decreaseHP(int amount){
         fightHero.setHP(fightHero.getHP() - amount);
@@ -87,14 +93,50 @@ abstract public class Unit {
         }
     }
 
+    public boolean isDead(){
+        return fightHero.getHP() <= 0;
+    }
+
+    public String printHeroTypeAndLevel(){
+        StringBuilder sb = new StringBuilder();
+        sb.append(this.name).append(": level ").append(baseHero.getLevel()).append(" ").append(baseHero.toString()).append(". ");
+        return sb.toString();
+    }
+
     public String printHPAndMana(){
         StringBuilder sb = new StringBuilder();
         sb.append(this.name).append(": ").append(fightHero.getHP()).append(" hp.");
         return sb.toString();
     }
 
+    public Ability firstAbility(){
+        if(fightHero.getActiveAbility(0) != null){
+            return fightHero.getActiveAbility(0);
+        }
+        return null;
+    }
+
+    public boolean closeToDying(){
+        //a unit is close to dying if it has 15% hp left
+        return (fightHero.getHP() > 0 && fightHero.getHP() <= baseHero.getHP() * 0.15);
+    }
+
+    public boolean isHealer(){
+        return fightHero.isHealer();
+    }
+
     public String getName() {
         return name;
     }
+
+    public List<Ability> getAbilities(){
+        return abilities;
+    }
+
+    public int getLevel(){
+        return level;
+    }
+
+    public int getFightHP(){ return fightHero.getHP(); }
 
 }
